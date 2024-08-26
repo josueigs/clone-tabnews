@@ -18,11 +18,11 @@ function checkPostgres() {
   exec("docker exec postgres-dev pg_isready --host localhost", handleReturn);
   function handleReturn(error, stdout) {
     if (stdout.search("accepting connections") === -1) {
-      process.stdout.write(`\r🟡 ${messageWaiting} ${showSpinner()}`);
+      process.stdout.write(`\r🔴 ${messageWaiting} ${showSpinner()}`);
       checkPostgres();
       return;
     }
-    process.stdout.write(`\r⚫ ${messageWaiting} - ${showElapsedTime()}`);
+    process.stdout.write(`\r🟡 ${messageWaiting} - ${showElapsedTime()}`);
     process.stdout.write(`\n🟢 ${messageReady}\n`);
   }
 }
